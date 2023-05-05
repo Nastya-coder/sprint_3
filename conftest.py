@@ -1,38 +1,9 @@
 import pytest
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+from locators import StellarBurgers
 
 
 @pytest.fixture
-def main_page():
-    driver = webdriver.Chrome()
-    driver.get("https://stellarburgers.nomoreparties.site")
-    return driver
-
-
-@pytest.fixture
-def registration_page():
-    driver = webdriver.Chrome()    
-    driver.get("https://stellarburgers.nomoreparties.site/register")
-    return driver
-
-
-@pytest.fixture
-def login_page():
-    driver = webdriver.Chrome()    
-    driver.get("https://stellarburgers.nomoreparties.site/login")
-    return driver
-
-
-@pytest.fixture
-def forgot_password_page():
-    driver = webdriver.Chrome()    
-    driver.get("https://stellarburgers.nomoreparties.site/forgot-password")
-    return driver
-
-
-@pytest.fixture
-def forgot_account_page():
-    driver = webdriver.Chrome()    
-    driver.get("https://stellarburgers.nomoreparties.site/account")
-    return driver
+def website():
+    _website = StellarBurgers()
+    yield _website
+    _website.quit()
